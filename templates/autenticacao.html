@@ -5,9 +5,10 @@
     <title>Login sistema</title>
 </head>
 <body>
-    <form action="/" method="POST">
+    <form action='/' method="POST">
+        <!-- <form method="post"> -->
         {% csrf_token %}
-        
+        <!-- {{ form.as_p }} -->
         <label>Login</label>
         <input type="text" name="usuario" id="usuario" value="{{ usuario }}" />
         
@@ -15,6 +16,7 @@
         <input type="password" name="senha" id="senha" value="{{ senha }}" />
         
         <input type="submit" value="Login" />
+        <button type="submit">Login</button>
     </form>
     <div>
         <center>
