@@ -4,10 +4,11 @@
         <title>Lista de veículos cadastrados</title>
     </head>
     <body>
+        <a href="/veiculos/novo">Novo</a>
         <ul>
             {% for veiculo in lista_veiculos %}
             <li>
-                {{forloop.counter}} {{ veiculo.marca | upper }} {{veiculo.modelo | lower}}
+                {{forloop.counter}} {{ veiculo.marca | upper }} {{veiculo.modelo | lower}} {{veiculo.ano_fabricacao}}: R$ {{veiculo.valor}}
                 {% if veiculo.ano_fabricacao < 2015 %}
                     Carro antigo
                 {% endif %}

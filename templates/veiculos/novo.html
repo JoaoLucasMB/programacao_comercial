@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cadastrar novo veiculo</title>
+    </head>
+    <body>
+        <form action="/veiculos/novo/" method="POST">
+            {% csrf_token %}
+            <div>
+                {{ form.subject.errors }}
+            </div>
+            {{ form.as_p }}
+            <!-- <div>
+                <label>Marca</label>
+                {{ form.marca }}
+            </div> -->
+            <input type="submit" value="Salvar"/>
+            <input type="reset" value="Limpar"/>
+        </form>
+    </body>
+</html>
