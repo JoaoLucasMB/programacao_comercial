@@ -4,7 +4,8 @@
         <title>Lista de veículos cadastrados</title>
     </head>
     <body>
-        <a href="/veiculos/novo">Novo</a>
+        {% load static %}
+        <!-- <a href="/veiculos/novo">Novo</a> -->
         <ul>
             {% for veiculo in lista_veiculos %}
             <li>
@@ -12,8 +13,13 @@
                 {% if veiculo.ano_fabricacao < 2015 %}
                     Carro antigo
                 {% endif %}
+                <a href="/veiculos/editar/{{ veiculo.id }}/"><img src="{% static 'imgs/edit.jpg' %}" width="20" height="20"></a>
+                <a href="/veiculos/deletar/{{ veiculo.id }}/"><img src="{% static 'imgs/delete.png' %}" width="20" height="20"></a>
             </li>
             {% endfor %}
         </ul>
+        <div><a href="/veiculos/novo"><button type="button">Adicionar Veículo</button></a></div>
+        <!-- adicionar maneira para deslogar após adicionar sessão de usuário-->
+        <div><a href="/"><button type="button">Logout</button></a></div>
     </body>
 </html>
