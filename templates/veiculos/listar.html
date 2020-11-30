@@ -13,7 +13,7 @@
                 {% if veiculo.ano_fabricacao < 2015 %}
                     Carro antigo
                 {% endif %}
-                <a href="/veiculos/editar/{{ veiculo.id }}/"><img src="{% static 'imgs/edit.jpg' %}" width="20" height="20"></a>
+                <a href="/veiculos/{{ veiculo.id }}/"><img src="{% static 'imgs/edit.jpg' %}" width="20" height="20"></a>
                 <a href="/veiculos/deletar/{{ veiculo.id }}/"><img src="{% static 'imgs/delete.png' %}" width="20" height="20"></a>
             </li>
             {% endfor %}

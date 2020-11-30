@@ -6,9 +6,12 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from veiculos.models import Veiculo
 from veiculos.forms import FormularioVeiculo
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
+@method_decorator(login_required, name='dispatch')
 class VeiculosList(ListView):
     model = Veiculo
     context_object_name = 'lista_veiculos'
@@ -26,6 +29,12 @@ class VeiculosEdit(UpdateView):
     model = Veiculo
     form_class = FormularioVeiculo
     template_name = 'veiculos/editar.html'
+    success_url = reverse_lazy('listar-veiculos')
+
+class VeiculosDelete(DeleteView):
+    # View para deletar veículos cadastrados
+    model = Veiculo
+    template_name = 'veiculos/deletar.html'
     success_url = reverse_lazy('listar-veiculos')
 
 # class VeiculosList(View):
