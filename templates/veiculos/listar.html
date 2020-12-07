@@ -1,25 +1,46 @@
+{% load render_table from django_tables2 %}
 <html>
     <head>
+        {% load static %}
         <meta charset="utf-8">
         <title>Lista de veículos cadastrados</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->	
+            <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <!--===============================================================================================-->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
     </head>
     <body>
-        {% load static %}
+        {% render_table object_list %}
+        <!-- {% load static %} -->
         <!-- <a href="/veiculos/novo">Novo</a> -->
-        <ul>
+        <!-- <ul>
             {% for veiculo in lista_veiculos %}
             <li>
                 {{forloop.counter}} {{ veiculo.marca | upper }} {{veiculo.modelo | lower}} {{veiculo.ano_fabricacao}}: R$ {{veiculo.valor}}
                 {% if veiculo.ano_fabricacao < 2015 %}
                     Carro antigo
-                {% endif %}
+                {% endif %} -->
                 <a href="/veiculos/{{ veiculo.id }}/"><img src="{% static 'imgs/edit.jpg' %}" width="20" height="20"></a>
                 <a href="/veiculos/deletar/{{ veiculo.id }}/"><img src="{% static 'imgs/delete.png' %}" width="20" height="20"></a>
-            </li>
-            {% endfor %}
-        </ul>
+            <!-- </li> -->
+            <!-- {% endfor %} -->
+        <!-- </ul> -->
         <div><a href="/veiculos/novo"><button type="button">Adicionar Veículo</button></a></div>
         <!-- adicionar maneira para deslogar após adicionar sessão de usuário-->
-        <div><a href="/"><button type="button">Logout</button></a></div>
+        <!-- <div><a href="/"><button type="button">Logout</button></a></div> -->
     </body>
 </html>

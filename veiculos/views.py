@@ -8,12 +8,14 @@ from veiculos.models import Veiculo
 from veiculos.forms import FormularioVeiculo
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .tables import VeiculoTable
 
 # Create your views here.
 
 @method_decorator(login_required, name='dispatch')
 class VeiculosList(ListView):
     model = Veiculo
+    table_class = VeiculoTable
     context_object_name = 'lista_veiculos'
     template_name = 'veiculos/listar.html'
 
