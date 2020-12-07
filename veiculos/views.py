@@ -9,17 +9,17 @@ from veiculos.forms import FormularioVeiculo
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .tables import VeiculoTable
+from sistema.utilitarios import AutenticacaoObrigatoria
 
 # Create your views here.
 
-@method_decorator(login_required, name='dispatch')
-class VeiculosList(ListView):
+class VeiculosList(AutenticacaoObrigatoria, ListView):
     model = Veiculo
     table_class = VeiculoTable
     context_object_name = 'lista_veiculos'
     template_name = 'veiculos/listar.html'
 
-class VeiculosNew(CreateView):
+class VeiculosNew(AutenticacaoObrigatoria, CreateView):
     # View para a criação de novos veículos
     model = Veiculo
     form_class = FormularioVeiculo
@@ -45,3 +45,12 @@ class VeiculosDelete(DeleteView):
 #             'lista_veiculos': Veiculo.objects.all().order_by('marca')
 #         }
 #         return render(request, 'veiculos/listar.html', contexto)
+
+from veiculos.serializers import SerializadorVeiculo
+from rest_framework.generics import ListAPIView
+
+class VeiculosListAPI(ListAPIView):
+    serializer_class = SerializadorVeiculo
+
+    def get_queryset(self):
+        return Veiculo.objects.all()
