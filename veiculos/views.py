@@ -13,13 +13,15 @@ from sistema.utilitarios import AutenticacaoObrigatoria
 
 # Create your views here.
 
-class VeiculosList(AutenticacaoObrigatoria, ListView):
+# class VeiculosList(AutenticacaoObrigatoria, ListView):
+class VeiculosList(ListView):
     model = Veiculo
     table_class = VeiculoTable
     context_object_name = 'lista_veiculos'
     template_name = 'veiculos/listar.html'
 
-class VeiculosNew(AutenticacaoObrigatoria, CreateView):
+# class VeiculosNew(AutenticacaoObrigatoria, CreateView):
+class VeiculosNew(CreateView):
     # View para a criação de novos veículos
     model = Veiculo
     form_class = FormularioVeiculo
